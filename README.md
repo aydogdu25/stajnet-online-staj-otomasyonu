@@ -92,7 +92,7 @@ Proje, şifre sıfırlama işlemleri için Gmail SMTP sunucusunu kullanmaktadır
 ![Staj Başvuru Formu](screenshots/4.png)
 
 ### Staj Rapor Yükleme
-![Staj Başvuru Formu](screenshots/sc5.png)
+![Staj Başvuru Formu](screenshots/5.png)
 
 ### Staj Belgeleri
 ![Staj Başvuru Formu](screenshots/6.png)
