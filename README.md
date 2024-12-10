@@ -86,16 +86,16 @@ Proje, şifre sıfırlama işlemleri için Gmail SMTP sunucusunu kullanmaktadır
 ![Kullanıcı Paneli](screenshots/2.png)
 
 ### Staj Başvuru Formu
-![Staj Başvuru Formu](3.png)
+![Staj Başvuru Formu](screenshots/3.png)
 
 ### Staj Başvuru Durumu
-![Staj Başvuru Formu](4.png)
+![Staj Başvuru Formu](screenshots/4.png)
 
 ### Staj Rapor Yükleme
-![Staj Başvuru Formu](5.png)
+![Staj Başvuru Formu](screenshots/sc5.png)
 
 ### Staj Belgeleri
-![Staj Başvuru Formu](6.png)
+![Staj Başvuru Formu](screenshots/6.png)
 
 ### Admin Giriş
 ![Admin Başvuru Yönetimi](screenshots/a1.png)
