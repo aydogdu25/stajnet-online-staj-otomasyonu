@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "RaporYukleme";
+}
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="panel panel-primary text-center">
+                <div class="panel-heading">
+                    <h4>
+                        RAPOR YÜKLEME ALANI
+                    </h4>
+                </div>
+                <div class="panel-body" style="display: flex; flex-direction: column; align-items: center">
+
+                    <!-- Başarı Mesajı -->
+                    <div class="col-md-9 text-center">
+                        <br>
+                        @if (TempData["Success"] != null)
+                        {
+                            <div class="alert alert-success" id="raporYuklendi1">
+                                <label>@TempData["Success"]</label>
+                            </div>
+                        }
+                        @if (TempData["Error"] != null)
+                        {
+                            <div class="alert alert-danger" id="raporHatasi">
+                                <label>@TempData["Error"]</label>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="col-md-7" style="text-align: center;">
+                        <form method="post" action="@Url.Action("RaporYukleme", "Home")" enctype="multipart/form-data">
+                            <h4>Staj Programı:</h4>
+                            <select class="form-select" name="stajProgramlari" required>
+                                <option value="" disabled selected>Bir program seçiniz</option>
+                                <option value="Staj 1">Staj 1</option>
+                                <option value="Staj 2">Staj 2</option>
+                                <option value="IME">IME</option>
+                            </select>
+                            <br />
+
+                            <h4>Staj Raporu (Ek-3):</h4>
+                            <div class="input-group" style="width: 100%;">
+                                <input type="file" class="form-file-input" name="file" id="fileInput1" onchange="updateFileName('fileInput1', 'fileLabel1')" required />
+                                <label class="form-file-label" id="fileLabel1">
+                                    <span class="form-file-text">Dosya Seç</span>
+                                    <span class="form-file-button">Gözat</span>
+                                </label>
+                            </div>
+                            <br />
+
+                            <button type="submit" class="btn btn-success" style="width: 30%; min-width: 100px;">
+                                <i class="fas fa-upload" style="margin-right: 5px;"></i> Yükle
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

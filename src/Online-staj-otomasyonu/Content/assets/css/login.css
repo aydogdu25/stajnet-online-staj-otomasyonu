@@ -1,0 +1,33 @@
+.body{
+    background-color: #f5f5f9;
+}
+.input-group .form-control {
+    border-left: none;
+}
+.input-group .input-group-text {
+    background-color: #f5f5f9;
+    border-right: none;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #009e49;
+    color: #fff;
+}
+
+.nav-tabs .nav-link {
+    background-color: #f5f5f9;
+    color: #000;
+}
+.input-group {
+	display: flex;
+	align-items: center; 
+}
+	
+.info-icon {
+	margin-right: 8px; 
+	font-size: 1.2em; 
+}
+	
+.info-text {
+	margin: 0; 
+}

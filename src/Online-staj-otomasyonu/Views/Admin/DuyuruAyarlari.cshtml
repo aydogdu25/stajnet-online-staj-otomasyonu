@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Duyuru Ayarları";
+}
+
+<!-- DUYURU AYARLARI -->
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center"><h4>DUYURU AYARLARI</h4></div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <br />
+                            <form action="@Url.Action("DuyuruAyarlari", "Admin")" method="post">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <!-- Table Headers -->
+                                    <thead>
+                                        <tr>
+                                            <th>Staj Programı</th>
+                                            <th>Son Başvuru Tarihi</th>
+                                            <th>Staj Dönemi Başlangıç Tarihi</th>
+                                            <th>Staj Dönemi Bitiş Tarihi</th>
+                                            <th>Son Defter Teslim Tarihi</th>
+                                            <th>Mülakat Başlangıç Tarihi</th>
+                                            <th>Mülakat Bitiş Tarihi</th>
+                                            <th>İşlemler</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Staj 1 Formu -->
+                                        <tr>
+                                            <td>STAJ - 1</td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="SonBasvuruTarihi1" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="SdBaslangicTarihi1" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="SdBitisTarihi1" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="SdTeslimTarihi1" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="MBaslangicTarihi1" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="MBitisTarihi1" required /></td>
+                                            <td><button class="btn btn-success" type="submit" name="StajProgram" value="Staj1"><i class="fa fa-refresh"></i> Güncelle</button></td>
+                                        </tr>
+
+                                        <!-- Staj 2 Formu -->
+                                        <tr>
+                                            <td>STAJ - 2</td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="SonBasvuruTarihi2" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="SdBaslangicTarihi2" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="SdBitisTarihi2" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="SdTeslimTarihi2" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="MBaslangicTarihi2" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="MBitisTarihi2" required /></td>
+                                            <td><button class="btn btn-success" type="submit" name="StajProgram" value="Staj2"><i class="fa fa-refresh"></i> Güncelle</button></td>
+                                        </tr>
+
+                                        <!-- İME Formu -->
+                                        <tr>
+                                            <td>İME</td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="SonBasvuruTarihi3" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="SdBaslangicTarihi3" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="SdBitisTarihi3" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="SdTeslimTarihi3" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="MBaslangicTarihi3" required /></td>
+                                            <td><input type="date" class="form-control date-picker" placeholder="gg.aa.yyyy" name="MBitisTarihi3" required /></td>
+                                            <td><button class="btn btn-success" type="submit" name="StajProgram" value="Ime"><i class="fa fa-refresh"></i> Güncelle</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Bildirim {
+    @if (TempData["Duyuru"] != null || TempData["Error"] != null)
+    {
+        <script type="text/javascript">
+            var message = '@(TempData["Duyuru"] ?? TempData["Error"])';
+            alert(message);
+            window.location.href = '@Url.Action("DuyuruAyarlari", "Admin")';
+        </script>
+    }
+}
+

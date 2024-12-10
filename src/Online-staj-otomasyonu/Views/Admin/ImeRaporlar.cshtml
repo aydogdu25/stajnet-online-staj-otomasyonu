@@ -1,0 +1,49 @@
+﻿@using Online_staj_otomasyonu.Models
+@model List<RaporModel>
+
+@{
+    ViewBag.Title = "ImeRaporlar";
+}
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center"><h4>IME RAPORLAR</h4></div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example9">
+                                <thead>
+                                    <tr>
+                                        <th>Öğr. No</th>
+                                        <th>Ad</th>
+                                        <th>Soyad</th>
+                                        <th>Başvuru Dönemi</th>
+                                        <th>İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var rapor in Model)
+                                    {
+                                        <tr>
+                                            <td>@rapor.RaporNo</td>
+                                            <td>@rapor.RaporAd</td>
+                                            <td>@rapor.RaporSoyad</td>
+                                            <td>@rapor.RaporDonem</td>
+                                            <td class="text-center">
+                                                <a href="@rapor.RaporBelge" class="btn btn-primary" target="_blank">
+                                                    <i class="fa fa-download"></i> Rapor İndir
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

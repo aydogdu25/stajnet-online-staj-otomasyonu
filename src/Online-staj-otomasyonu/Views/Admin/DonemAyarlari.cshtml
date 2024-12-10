@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "DonemAyarlari";
+}
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center"><h4>DÖNEM AYARLARI</h4></div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <form method="post" action="@Url.Action("DonemAyarlari", "Admin")">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Dönem Adı</th>
+                                            <th>1. Dönem Yılı</th>
+                                            <th>2. Dönem Yılı</th>
+                                            <th>Başvuru Başlangıç Tarihi</th>
+                                            <th>Başvuru Bitiş Tarihi</th>
+                                            <th>İşlemler</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Güz Dönemi</td>
+                                            <td>
+                                                <select name="DonemBYili1" class="form-control year-picker" onchange="updateSecondTerm(this)" style="background-color: white; border-radius: 3px;">
+                                                    <option value="">Yıl seçin</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="text" name="DonemSYili1" class="form-control" placeholder="2. Dönem Yılı" style="background-color: white; border-radius: 3px;" readonly />
+                                            </td>
+                                            <td><input type="text" name="DonemBasvuruBaslangic1" class="form-control date-picker" placeholder="Başlangıç Tarihi" style="background-color: white; border-radius: 3px;" /></td>
+                                            <td><input type="text" name="DonemBasvuruBitis1" class="form-control date-picker" placeholder="Bitiş Tarihi" style="background-color: white; border-radius: 3px;" /></td>
+                                            <td>
+                                                <button class="btn btn-success" type="submit" name="StajDonem" value="Guz">
+                                                    <i class="fas fa-refresh"></i> Güncelle
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bahar Dönemi</td>
+                                            <td>
+                                                <select name="DonemBYili2" class="form-control year-picker" onchange="updateSecondTerm(this)" style="background-color: white; border-radius: 3px;">
+                                                    <option value="">Yıl seçin</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="text" name="DonemSYili2" class="form-control" placeholder="2. Dönem Yılı" style="background-color: white; border-radius: 3px;" readonly />
+                                            </td>
+                                            <td><input type="text" name="DonemBasvuruBaslangic2" class="form-control date-picker" placeholder="Başlangıç Tarihi" style="background-color: white; border-radius: 3px;" /></td>
+                                            <td><input type="text" name="DonemBasvuruBitis2" class="form-control date-picker" placeholder="Bitiş Tarihi" style="background-color: white; border-radius: 3px;" /></td>
+                                            <td>
+                                                <button class="btn btn-success" type="submit" name="StajDonem" value="Bahar">
+                                                    <i class="fas fa-refresh"></i> Güncelle
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Yaz Dönemi</td>
+                                            <td><input type="text" class="form-control" value="-" name="DonemBYili3" readonly placeholder="-" style="background-color: white; border-radius: 3px; " /></td>
+                                            <td>
+                                                <select name="DonemSYili3" class="form-control year-picker" style="background-color: white; border-radius: 3px;">
+                                                    <option value="">Yıl seçin</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="text" name="DonemBasvuruBaslangic3" class="form-control date-picker" placeholder="Başlangıç Tarihi" style="background-color: white; border-radius: 3px;" /></td>
+                                            <td><input type="text" name="DonemBasvuruBitis3" class="form-control date-picker" placeholder="Bitiş Tarihi" style="background-color: white; border-radius: 3px;" /></td>
+                                            <td>
+                                                <button class="btn btn-success" type="submit" name="StajDonem" value="Yaz">
+                                                    <i class="fas fa-refresh"></i> Güncelle
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Donem {
+    @if (TempData["ErrorDonem"] != null || TempData["SuccessDonem"] != null)
+    {
+        <script type="text/javascript">
+            var message = '@(TempData["ErrorDonem"] ?? TempData["SuccessDonem"])';
+            alert(message);
+            window.location.href = '@Url.Action("DonemAyarlari", "Admin")';
+        </script>
+    }
+}

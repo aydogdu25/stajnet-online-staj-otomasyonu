@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "Belge Ayarları";
+    var belgeler = ViewBag.Belgeler as List<Online_staj_otomasyonu.Models.Belge>;
+}
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center">
+                        <h4>BELGE AYARLARI</h4>
+                    </div>
+                    <div class="panel-body">
+                        <!-- Belge Ekleme Butonu -->
+                        <div class="panel-heading text-right">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#belgeEkleModal">
+                                <i class="fas fa-plus"></i> Belge Ekle
+                            </button>
+                        </div>
+
+                        <!-- Belge Ekle Modal -->
+                        <!-- Belge Ekle Modal -->
+                        <div class="modal fade" id="belgeEkleModal" tabindex="-1" role="dialog" aria-labelledby="belgeEkleLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="belgeEkleLabel">Belge Ekle</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="belgeEkleForm" enctype="multipart/form-data">
+                                            <div class="form-group">
+                                                <label for="documentName">Belge Adı</label>
+                                                <input type="text" class="form-control" id="documentName" name="belgeAdi" placeholder="Belge adını girin" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="documentFormat">Belge Formatı</label>
+                                                <select class="form-control" id="documentFormat" name="belgeFormati" required>
+                                                    <option value="">Seçin...</option>
+                                                    <option value="word">Word</option>
+                                                    <option value="excel">Excel</option>
+                                                    <option value="pdf">PDF</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="documentUpload">Belge Yükle</label>
+                                                <input type="file" class="form-control" id="documentUpload" name="belgeDosyasi" required>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                                <button type="submit" class="btn btn-success">Ekle</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Belge Listesi -->
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover" id="belge-yönetim-tablo">
+                                <thead>
+                                    <tr>
+                                        <th>Belge Adı</th>
+                                        <th>Formatı</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @if (belgeler != null)
+                                    {
+
+                                        foreach (var belge in belgeler)
+                                        {
+                                            <tr>
+                                                <td>@belge.belgeAdi</td>
+                                                <td>
+                                                    @if (belge.belgeFormati.ToLower() == "word")
+                                                    {
+                                                        <i class="fas fa-file-word fa-3x text-primary"></i>
+                                                    }
+                                                    else if (belge.belgeFormati.ToLower() == "excel")
+                                                    {
+                                                        <i class="fas fa-file-excel fa-3x text-success"></i>
+                                                    }
+                                                    else if (belge.belgeFormati.ToLower() == "pdf")
+                                                    {
+                                                        <i class="fas fa-file-pdf fa-3x text-danger"></i>
+                                                    }
+                                                </td>
+                                                <td>
+
+
+                                                    <!-- Silme Butonu -->
+                                                    <button class="btn btn-danger delete-button" title="Sil" data-id="@belge.belgeID">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="3" class="text-center">Henüz belge eklenmemiş.</td>
+                                        </tr>
+
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

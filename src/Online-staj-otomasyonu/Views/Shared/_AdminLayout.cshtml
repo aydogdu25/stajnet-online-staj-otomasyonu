@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="description" content="StajNet - Online Staj Otomasyonu" />
+    <meta name="author" content="Kadir Aydoğdu" />
+
+    <title>StajNet - Online Staj Otomasyonu</title>
+    <link href="/Content/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="/Content/assets/css/admin-style.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="/Content/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse set-radius-zero">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("", "Admin")">
+                    <img src="/Content/assets/img/adminlogo.png" />
+                </a>
+            </div>
+            <div class="right-div">
+                <a href="@Url.Action("", "Login")" class="btn btn-danger pull-right">Çıkış</a>
+            </div>
+        </div>
+    </div>
+    <section class="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse">
+                        <ul id="menu-top" class="nav navbar-nav navbar-left">
+                            <li>
+                                <a href="@Url.Action("", "Admin")" class="menu-top">Anasayfa</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" id="panel-yonetim-staj1" data-toggle="dropdown">
+                                    STAJ
+                                    - I <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="@Url.Action("Staj1Onay", "Admin")">Onaylananlar</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="@Url.Action("Staj1Bekleyen", "Admin")">Onay Bekleyenler</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" id="panel-yonetim-staj2" data-toggle="dropdown">
+                                    STAJ
+                                    - II <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="@Url.Action("Staj2Onay", "Admin")">Onaylananlar</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="@Url.Action("Staj2Bekleyen", "Admin")">Onay Bekleyenler</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" id="panel-yonetim-staj3" data-toggle="dropdown">
+                                    İME
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="@Url.Action("ImeOnay", "Admin")">Onaylananlar</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="@Url.Action("ImeBekleyen", "Admin")">Onay Bekleyenler</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" id="panel-yonetim-raporlar"
+                                   data-toggle="dropdown">Raporlar <i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="@Url.Action("Staj1Raporlar", "Admin")">Staj - I</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="@Url.Action("Staj2Raporlar", "Admin")">Staj - II</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="@Url.Action("ImeRaporlar", "Admin")">İME</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" id="panel-yonetim-baslik"
+                                   data-toggle="dropdown">Panel Yönetim <i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="@Url.Action("DonemAyarlari", "Admin")">Dönem Ayarları</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="@Url.Action("DuyuruAyarlari", "Admin")">Duyuru Ayarları</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="@Url.Action("BelgeAyarlari", "Admin")">Belge Ayarları</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul id="menu-profil" class="nav navbar-nav navbar-right">
+                            <li class="dropdown navbar-right">
+                                <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">
+                                    Profilim <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="@Url.Action("MesajPaneli", "Admin")">Mesajlar</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a role="menuitem" tabindex="-1" href="@Url.Action("SifreGuncelle", "Admin")">Şifre Güncelleme</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @RenderBody()
+    <!-- FOOTER BAŞLANGIÇ -->
+    <section class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    &copy; 2024 StajNet. Tüm hakları saklıdır.
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FOOTER SON -->
+    <script src="/Content/assets/js/jquery-1.10.2.js"></script>
+    <script src="/Content/assets/js/bootstrap.js"></script>
+    <script src="/Content/assets/js/dataTables/jquery.dataTables.js"></script>
+    <script src="/Content/assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="/Content/assets/js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/tr.js"></script>
+    <script src="/Content/assets/js/admin.js"></script>
+    <script src="~/Content/assets/js/belge.js"></script>
+
+
+    @RenderSection("Bildirim", required: false)
+    @RenderSection("Donem", required: false)
+    @RenderSection("MesajAdmin", required: false)
+</body>
+
+</html>

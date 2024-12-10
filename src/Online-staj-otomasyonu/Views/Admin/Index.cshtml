@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Anasayfa";
+    var hocaAd = Session["HocaAd"] as string;
+}
+
+<div class="content-wrapper">
+    <div class="container">
+        <h4 class="header-line text-center">
+            HOŞGELDİN, @(!string.IsNullOrEmpty(hocaAd) ? hocaAd : "MİSAFİR")
+        </h4>
+
+        <div class="row">
+            <!-- Staj 1 Panel -->
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center">
+                        <h4>Staj 1</h4>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="staj1Chart"></canvas>
+                        <div id="staj1Message" style="display: none; text-align: center; color: #888;">
+                            Veri bulunmamaktadır.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staj 2 Panel -->
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center">
+                        <h4>Staj 2</h4>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="staj2Chart"></canvas>
+                        <div id="staj2Message" style="display: none; text-align: center; color: #888;">
+                            Veri bulunmamaktadır.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IME Panel -->
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center">
+                        <h4>IME</h4>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="imeChart"></canvas>
+                        <div id="imeMessage" style="display: none; text-align: center; color: #888;">
+                            Veri bulunmamaktadır.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Staj 1 Chart
+    const staj1Ctx = document.getElementById('staj1Chart').getContext('2d');
+    const staj1OnayBekleyen = @ViewBag.Staj1OnayBekleyen;
+    const staj1Onaylanan = @ViewBag.Staj1Onaylanan;
+
+    if (staj1OnayBekleyen === 0 && staj1Onaylanan === 0) {
+        document.getElementById('staj1Chart').style.display = 'none';
+        document.getElementById('staj1Message').style.display = 'block';
+    } else {
+        new Chart(staj1Ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Onay Bekleyen', 'Onaylanan'],
+                datasets: [{
+                    data: [staj1OnayBekleyen, staj1Onaylanan],
+                    backgroundColor: ['#FF6384', '#36A2EB']
+                }]
+            }
+        });
+    }
+
+    // Staj 2 Chart
+    const staj2Ctx = document.getElementById('staj2Chart').getContext('2d');
+    const staj2OnayBekleyen = @ViewBag.Staj2OnayBekleyen;
+    const staj2Onaylanan = @ViewBag.Staj2Onaylanan;
+
+    if (staj2OnayBekleyen === 0 && staj2Onaylanan === 0) {
+        document.getElementById('staj2Chart').style.display = 'none';
+        document.getElementById('staj2Message').style.display = 'block';
+    } else {
+        new Chart(staj2Ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Onay Bekleyen', 'Onaylanan'],
+                datasets: [{
+                    data: [staj2OnayBekleyen, staj2Onaylanan],
+                    backgroundColor: ['#FF6384', '#36A2EB']
+                }]
+            }
+        });
+    }
+
+    // IME Chart
+    const imeCtx = document.getElementById('imeChart').getContext('2d');
+    const imeOnayBekleyen = @ViewBag.IMEOnayBekleyen;
+    const imeOnaylanan = @ViewBag.IMEOnaylanan;
+
+    if (imeOnayBekleyen === 0 && imeOnaylanan === 0) {
+        document.getElementById('imeChart').style.display = 'none';
+        document.getElementById('imeMessage').style.display = 'block';
+    } else {
+        new Chart(imeCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Onay Bekleyen', 'Onaylanan'],
+                datasets: [{
+                    data: [imeOnayBekleyen, imeOnaylanan],
+                    backgroundColor: ['#FF6384', '#36A2EB']
+                }]
+            }
+        });
+    }
+</script>

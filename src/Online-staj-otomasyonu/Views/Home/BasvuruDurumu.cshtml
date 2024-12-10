@@ -1,0 +1,68 @@
+﻿@using Online_staj_otomasyonu.Models
+@model List<BasvuruDurumuModel>
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center">
+                        <h4>BAŞVURU DURUMLARI</h4>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Başvuru Programı</th>
+                                    <th>Dönemi</th>
+                                    <th>Durum</th>
+                                    <th>Açıklama</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.Count; i++)
+                                {
+                                    var basvuru = Model[i];
+                                    <tr>
+                                        <td>●</td>
+                                        <td>@basvuru.Program</td>
+                                        <td>@basvuru.Donem</td>
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(basvuru.Neden))
+                                            {
+                                                <span class="label label-danger">Reddedildi</span>
+                                            }
+                                            else if (string.IsNullOrEmpty(basvuru.Neden) && !string.IsNullOrEmpty(basvuru.Program))
+                                            {
+                                                <span class="label label-success">Onaylandı</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="label label-warning">İnceleniyor</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(basvuru.Neden))
+                                            {
+                                                <span>Başvurunuz reddedildi. Danışman notu: @basvuru.Neden</span>
+                                            }
+                                            else if (string.IsNullOrEmpty(basvuru.Neden) && !string.IsNullOrEmpty(basvuru.Program))
+                                            {
+                                                <span>Başvurunuz onaylanmıştır.</span>
+                                            }
+                                            else
+                                            {
+                                                <span>Başvurunuz başarıyla alınmıştır.</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Şifre Güncelle";
+}
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center"><h4>Şifre Güncelleme</h4></div>
+                <div class="panel-body">
+                    @if (TempData["ErrorPass"] != null)
+                    {
+                        <div class="alert alert-danger">
+                            @TempData["ErrorPass"]
+                        </div>
+                    }
+                    @if (TempData["SuccessPass"] != null)
+                    {
+                        <div class="alert alert-success">
+                            @TempData["SuccessPass"]
+                        </div>
+                    }
+                    <form method="post" action="@Url.Action("SifreGuncelle", "Admin")">
+                        <div class="form-group">
+                            <label>Şifre:</label>
+                            <input class="form-control" name="password" type="password" placeholder="Yeni şifrenizi girin" />
+                        </div>
+                        <div class="form-group">
+                            <label>Şifreyi Onayla:</label>
+                            <input class="form-control" type="password" name="passwordConfirm" placeholder="Yeni şifrenizi tekrar girin" />
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-danger">
+                                Şifreyi Güncelle
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,123 @@
+﻿@model Online_staj_otomasyonu.Models.AdminMesaj
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center"><h4>MESAJ PANELİ</h4></div>
+            <div class="panel-body">
+                <!-- Tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">Gelen Kutusu</a></li>
+                    <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">Gönderilen Mesajlar</a></li>
+                    <li role="presentation"><a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">Mesaj Yaz</a></li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content">
+                    <hr />
+                    <!-- Gelen Kutusu -->
+                    <div role="tabpanel" class="tab-pane active" id="tab1">
+                        <div class="panel-group" id="accordionTab1" role="tablist">
+                            @if (Model.GelenKutusu != null && Model.GelenKutusu.Count > 0)
+                            {
+                                int i = 1;
+                                foreach (var mesaj in Model.GelenKutusu)
+                                {
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingTab1-@i">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapseTab1-@i" aria-expanded="false" aria-controls="collapseTab1-@i" data-parent="#accordionTab1">
+                                                    ▼ Öğrenci: @mesaj.Ad @mesaj.Soyad <i class="fas fa-envelope"></i>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTab1-@i" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTab1-@i">
+                                            <div class="panel-body">@mesaj.Content</div>
+                                        </div>
+                                    </div>
+                                    i++;
+                                }
+                            }
+                            else
+                            {
+                                <div class="alert alert-info">Gelen mesajınız bulunmamaktadır.</div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Gönderilen Mesajlar -->
+                    <div role="tabpanel" class="tab-pane" id="tab2">
+                        <div class="panel-group" id="accordionTab2" role="tablist">
+                            @if (Model.GonderilenMesajlar != null && Model.GonderilenMesajlar.Count > 0)
+                            {
+                                int i = 1;
+                                foreach (var mesaj in Model.GonderilenMesajlar)
+                                {
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingTab2-@i">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapseTab2-@i" aria-expanded="false" aria-controls="collapseTab2-@i" data-parent="#accordionTab2">
+                                                    ▼ Öğrenci: @mesaj.Ad @mesaj.Soyad <i class="fas fa-paper-plane"></i>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTab2-@i" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTab2-@i">
+                                            <div class="panel-body">@mesaj.Content</div>
+                                        </div>
+                                    </div>
+                                    i++;
+                                }
+                            }
+                            else
+                            {
+                                <div class="alert alert-info">Henüz gönderilen mesajınız yok.</div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Mesaj Yaz -->
+                    <div role="tabpanel" class="tab-pane" id="tab3">
+                        <h4>Mesaj Yaz</h4>
+                        <form id="messageForm" action="@Url.Action("MesajPaneli", "Admin")" method="post">
+                            <div class="form-group">
+                                <label for="recipientSelect">Alıcı Seç:</label>
+                                <select class="form-control" id="recipientSelect" name="recipient" required>
+                                    <option value="" disabled selected>Alıcı seçiniz</option>
+                                    @foreach (var alici in ViewBag.Alicilar as List<string>)
+                                    {
+                                        <option value="@alici">@alici</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="messageInput">Mesajınız:</label>
+                                <textarea class="form-control" id="messageInput" name="messageInput" rows="3" style="height: 200px; resize: none;" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Gönder</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section MesajAdmin {
+    @if (TempData["MessageSuccessMesaj"] != null)
+    {
+        var Message = TempData["MessageSuccessMesaj"];
+        <script type="text/javascript">
+            alert('@Message');
+            window.location.href = '@Url.Action("MesajPaneli", "Admin")';
+        </script>
+    }
+    else if (@TempData["ErrorMessageMesaj"] != null)
+    {
+        <script type="text/javascript">
+            alert('@TempData["ErrorMessageMesaj"]');
+            window.location.href = '@Url.Action("MesajPaneli", "Admin")';
+        </script>
+    }
+}

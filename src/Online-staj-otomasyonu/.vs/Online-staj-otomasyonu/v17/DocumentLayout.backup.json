@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Aspar\\source\\repos\\Online-staj-otomasyonu\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{402AAE2C-25D9-4823-8D13-FB4767B729A4}|Online-staj-otomasyonu.csproj|c:\\users\\aspar\\source\\repos\\online-staj-otomasyonu\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{402AAE2C-25D9-4823-8D13-FB4767B729A4}|Online-staj-otomasyonu.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{402AAE2C-25D9-4823-8D13-FB4767B729A4}|Online-staj-otomasyonu.csproj|c:\\users\\aspar\\source\\repos\\online-staj-otomasyonu\\views\\home\\mesajpanel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{402AAE2C-25D9-4823-8D13-FB4767B729A4}|Online-staj-otomasyonu.csproj|solutionrelative:views\\home\\mesajpanel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Aspar\\source\\repos\\Online-staj-otomasyonu\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Aspar\\source\\repos\\Online-staj-otomasyonu\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADYAAACMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-10T14:37:48.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MesajPanel.cshtml",
+              "DocumentMoniker": "C:\\Users\\Aspar\\source\\repos\\Online-staj-otomasyonu\\Views\\Home\\MesajPanel.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\MesajPanel.cshtml",
+              "ToolTip": "C:\\Users\\Aspar\\source\\repos\\Online-staj-otomasyonu\\Views\\Home\\MesajPanel.cshtml",
+              "RelativeToolTip": "Views\\Home\\MesajPanel.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFMAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-10T14:35:14.805Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

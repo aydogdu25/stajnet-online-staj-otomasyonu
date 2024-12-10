@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Forgot";
+}
+
+<section class="h-100">
+    <div class="container h-100">
+        <div class="row justify-content-sm-center h-100">
+            <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+                <div class="text-center my-5">
+                    <img src="/Content/assets/img/opalogo.png" alt="logo" width="100">
+                </div>
+                <div class="card shadow-lg">
+                    <div class="card-body p-5">
+                        <h1 class="fs-4 card-title fw-bold mb-3">Şifremi Unuttum</h1>
+                        <form method="POST" action="@Url.Action("Forgot", "Login")" class="needs-validation" novalidate="" autocomplete="off">
+                            <div class="input-container mb-4">
+                                <label class="text-muted mb-2" for="email">E-Posta:</label>
+                                <input id="email" type="email" placeholder="E-posta adresini girin" class="form-control" name="email" required autofocus>
+                                <div class="invalid-feedback">
+                                    Lütfen boş alanları doldurunuz!
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <button type="submit" class="btn btn-success w-100"
+                                        style="background-color: #009e49;">
+                                    Gönder
+                                </button>
+                            </div>
+                        </form><br />
+                    </div>
+                    <div class="input-group-text">
+                        <i class="fas fa-info-circle info-icon"></i>
+                        <p class="info-text">Okula kayıtlı olan e-posta adresinizi giriniz.</p>
+                    </div>
+                    <div class="card-footer py-3 border-0">
+                        <div class="text-left">
+                            <a href="@Url.Action("","Login")" class="text-dark">Geri Dön</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5 text-muted">
+                    Copyright &copy; 2024 &mdash; StajNet
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @if (ViewBag.AlertMessage != null)
+    {
+        <script type="text/javascript">
+            alert('@ViewBag.AlertMessage');
+            window.location.href = '@Url.Action("", "Login")'; // Login sayfasına yönlendir
+        </script>
+    }
+}

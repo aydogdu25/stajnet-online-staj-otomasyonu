@@ -1,0 +1,81 @@
+﻿
+    @{
+        ViewBag.Title = "StajBasvurusu";
+    }
+
+
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="panel panel-primary text-center">
+                    <div class="panel-heading"><h4>STAJ BAŞVURUSU</h4></div>
+                    <div class="panel-body" style="display: flex; flex-direction: column; align-items: center">
+                        <div class="col-md-9">
+                            <div class="col-md-12">
+                                
+                                @if (TempData["ErrorStajBasvurusu"] != null)
+                                {
+                                    <label class="alert alert-danger" style="width: 100%;">
+                                        @TempData["ErrorStajBasvurusu"]
+                                    </label>
+                                }
+                                @if (TempData["SuccessStajBasvurusu"] != null)
+                                {
+                                    <label class="alert alert-success" style="width: 100%;">
+                                        @TempData["SuccessStajBasvurusu"]
+                                    </label>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <form action="@Url.Action("StajBasvurusu", "Home")" method="post" enctype="multipart/form-data">
+                                <h4>Başvuru Dönemi:</h4>
+                                <select class="form-select" name="stajDonem" required>
+                                    @foreach (var donem in ViewBag.Donemler as List<string>)
+                                    {
+                                        <option>@donem</option>
+                                    }
+                                </select>
+                                <br />
+                                <h4>Staj Programı:</h4>
+                                <select class="form-select" name="stajProgramlari" required>
+                                    <option value="" disabled selected>Bir program seçiniz</option>
+                                    <option value="Staj 1">Staj 1</option>
+                                    <option value="Staj 2">Staj 2</option>
+                                    <option value="IME">IME</option>
+                                </select><br />
+                                <h4>(*) Staj Başvuru Belgesi (Ek-1):</h4>
+                                <div class="input-group" style="width: 100%;">
+                                    <input type="file" class="form-file-input" name="stajBelge" id="stajBasvurusu" onchange="updateFileName('stajBasvurusu', 'stajBasvurusuLabel')" accept=".pdf" />
+                                    <label class="form-file-label" id="stajBasvurusuLabel">
+                                        <span class="form-file-text">Dosya Seç</span>
+                                        <span class="form-file-button">Gözat</span>
+                                    </label>
+                                </div>
+                                <br />
+                                <h4>Staj Başlangıç Tarihi:</h4>
+                                <div class="input-group" style="width: 100%; ">
+                                    <input type="text" class="form-control date-picker" name="stajBaslangic" placeholder="Başlangıç Tarihi" style="background-color: white; border-radius: 3px;" required/>
+                                </div>
+                                <br />
+                                <h4>Staj Bitiş Tarihi:</h4>
+                                <div class="input-group" style="width: 100%;">
+                                    <input  type="text" class="form-control date-picker" name="stajBitis" placeholder="Bitiş Tarihi" style="background-color: white; border-radius: 3px;" required/>
+                                </div>
+                                <br />
+                                <button type="submit" class="btn btn-success" style="width: 30%">
+                                    Gönder
+                                </button>
+                            </form>
+                        </div>
+                        <br>
+                        <label>
+                            (*) Staj yapacağınız kurumun, stajınızı onayladığı belgeyi
+                            yüklemeniz gerekmektedir.
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

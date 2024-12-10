@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Belgeler";
+}
+
+<!-- STAJ BELGELERİ İÇERİĞİ-->
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-info d-flex align-items-center">
+                    <i class="fas fa-exclamation-triangle me-2" style="font-size: 24px;"></i>
+                    <b>Eksik olduğunu düşündüğünüz belge varsa danışmanınızla iletişime geçiniz.</b>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4>
+                            Staj Belgeleri
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover" id="staj-belge-tablo">
+                                <thead>
+                                    <tr>
+                                        <th>Belge Adı</th>
+                                        <th>Formatı</th>
+                                        <th>İndirme Linki</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.Belgeler != null)
+                                    {
+                                        foreach (var belge in ViewBag.Belgeler)
+                                        {
+                                            <tr>
+                                                <td>@belge.belgeAdi</td>
+                                                <td>
+                                                    @if (belge.belgeFormati.ToLower() == "word")
+                                                    {
+                                                        <i class="fas fa-file-word fa-3x text-primary"></i>
+                                                    }
+                                                    else if (belge.belgeFormati.ToLower() == "excel")
+                                                    {
+                                                        <i class="fas fa-file-excel fa-3x text-success"></i>
+                                                    }
+                                                    else if (belge.belgeFormati.ToLower() == "pdf")
+                                                    {
+                                                        <i class="fas fa-file-pdf fa-3x text-danger"></i>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    
+                                                    <a href="@belge.belgeLink" class="btn btn-success" target="_blank">
+                                                        <i class="fas fa-download me-2"></i> İndir
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="3" class="text-center">Henüz belge eklenmemiş.</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- STAJ BELGELERİ İÇERİĞİ SONU-->
